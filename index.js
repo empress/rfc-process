@@ -6,7 +6,8 @@ const funnel = require('broccoli-funnel');
 const writeFile = require('broccoli-file-creator');
 
 const { Serializer } = require('jsonapi-serializer');
-const { readdirSync } = require('fs');
+const { readdirSync, existsSync } = require('fs');
+const { join } = require('path');
 
 const TocSerializer = new Serializer('toc', {
   attributes: [
@@ -14,31 +15,40 @@ const TocSerializer = new Serializer('toc', {
   ],
 });
 
-const rfcsJSON = new StaticSiteJson('text', {
-  contentFolder: 'rfcs',
-  type: 'rfcs',
-});
-
-const readmeFile = funnel('./', {
-  files: ['README.md']
-});
-
-const images = funnel('./images', {
-  destDir: 'images'
-});
-
-const pagesJSON = new StaticSiteJson(readmeFile, {
-  contentFolder: 'pages',
-  type: 'pages',
-})
-
 module.exports = {
   name: require('./package').name,
 
   treeForPublic() {
-    const rfcs = readdirSync('text').map((file) => file.replace(/\.md$/, ''));
+    let appPrefix = join(this.project.configPath(), '../..');
+
+    const rfcsJSON = new StaticSiteJson(join(appPrefix, 'text'), {
+      contentFolder: 'rfcs',
+      type: 'rfcs',
+    });
+
+    const readmeFile = funnel(appPrefix, {
+      files: ['README.md']
+    });
+
+    const pagesJSON = new StaticSiteJson(readmeFile, {
+      contentFolder: 'pages',
+      type: 'pages',
+    })
+
+    const rfcs = readdirSync(join(appPrefix, 'text')).map((file) => file.replace(/\.md$/, ''));
 
     const tocFile = writeFile('/tocs/rfc.json', JSON.stringify(TocSerializer.serialize({ id: 'rfc', links: rfcs })));
-    return BroccoliMergeTrees([rfcsJSON, tocFile, pagesJSON, images]);
+
+    const trees = [rfcsJSON, tocFile, pagesJSON]
+
+    if(existsSync(join(appPrefix, 'images'))) {
+      const images = funnel(join(appPrefix, 'images'), {
+        destDir: 'images'
+      });
+
+      trees.push(images);
+    }
+
+    return BroccoliMergeTrees(trees);
   }
 };
