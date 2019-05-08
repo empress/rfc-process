@@ -18,6 +18,21 @@ const TocSerializer = new Serializer('toc', {
 module.exports = {
   name: require('./package').name,
 
+  config() {
+    return {
+      fastboot: {
+        hostWhitelist: [/localhost:\d+/]
+      },
+    }
+  },
+
+  urlsForPrember() {
+    let appPrefix = join(this.project.configPath(), '../..');
+    const rfcs = readdirSync(join(appPrefix, 'text')).map((file) => file.replace(/\.md$/, ''));
+
+    return ['/', ...rfcs];
+  },
+
   treeForPublic() {
     let appPrefix = join(this.project.configPath(), '../..');
 
