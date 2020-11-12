@@ -25,9 +25,10 @@
     "broccoli-file-creator": "^2.1.1",
     "broccoli-funnel": "^2.0.2",
     "broccoli-merge-trees": "^3.0.2",
-    "broccoli-static-site-json": "^3.3.0",
+    "broccoli-static-site-json": "^4.2.1",
     "ember-cli-babel": "^7.1.2",
-    "jsonapi-serializer": "^3.6.4"
+    "jsonapi-serializer": "^3.6.4",
+    "resolve": "^1.10.1"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.6.3",

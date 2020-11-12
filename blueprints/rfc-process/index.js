@@ -3,6 +3,10 @@
 module.exports = {
   description: 'Default blueprint for rfc-process',
 
+  normalizeEntityName() {
+    // no-op
+  },
+
   filesToRemove: ['app/templates/application.hbs'],
 
   afterInstall() {
