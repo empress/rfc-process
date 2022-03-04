@@ -28,6 +28,7 @@
     "broccoli-merge-trees": "^3.0.2",
     "broccoli-static-site-json": "^3.3.0",
     "ember-cli-babel": "^7.1.2",
+    "ember-scroll": "^1.0.3",
     "jsonapi-serializer": "^3.6.4"
   },
   "devDependencies": {
