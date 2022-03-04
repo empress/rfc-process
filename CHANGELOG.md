@@ -1,4 +1,9 @@
-0.2.0 / 2022-03-04
+v0.2.1 / 2022-03-04
+==================
+* make ember-scroll a dependency of rfc-process #6 from @mansona
+* make markdown tables work in showdown #5 from @mansona
+
+v0.2.0 / 2022-03-04
 ==================
 * add auto-changelog system #4 from @mansona
 * fix location of htmlSafe import #3 from @mansona
