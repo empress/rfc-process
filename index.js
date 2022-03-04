@@ -23,6 +23,9 @@ module.exports = {
       fastboot: {
         hostWhitelist: [/localhost:\d+/]
       },
+      showdown: {
+        tables: true
+      }
     }
   },
 
