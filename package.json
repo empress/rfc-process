@@ -6,7 +6,7 @@
     "ember-addon",
     "prember-plugin"
   ],
-  "repository": "",
+  "repository": "https://github.com/empress/rfc-process",
   "license": "MIT",
   "author": "",
   "directories": {
