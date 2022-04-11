@@ -1,3 +1,7 @@
+v0.2.2 / 2022-04-11
+==================
+* add frontmatter attributes to rfcs #7 from @mansona
+
 v0.2.1 / 2022-03-04
 ==================
 * make ember-scroll a dependency of rfc-process #6 from @mansona
