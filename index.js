@@ -60,6 +60,8 @@ module.exports = {
     const rfcsJSON = new StaticSiteJson(join(dataDirectory, 'text'), {
       contentFolder: 'rfcs',
       type: 'rfcs',
+      attributes: ['start-date', 'release-date', 'release-versions', 'proposal-pr', 'tracking-link'],
+      references: ['teams', 'stage']
     });
 
     const readmeFile = funnel(dataDirectory, {
