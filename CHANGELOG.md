@@ -1,3 +1,7 @@
+v0.2.3 / 2022-04-28
+==================
+* Add stages and teams models and data processing #8 from @mansona
+
 v0.2.2 / 2022-04-11
 ==================
 * add frontmatter attributes to rfcs #7 from @mansona
