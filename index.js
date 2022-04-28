@@ -64,6 +64,18 @@ module.exports = {
       references: ['teams', 'stage']
     });
 
+    const teamsJSON = new StaticSiteJson(join(dataDirectory, 'teams'), {
+      contentFolder: 'teams',
+      type: 'teams',
+      attributes: ['name'],
+    });
+
+    const stagesJSON = new StaticSiteJson(join(dataDirectory, 'stages'), {
+      contentFolder: 'stages',
+      type: 'stages',
+      attributes: ['name'],
+    });
+
     const readmeFile = funnel(dataDirectory, {
       files: ['README.md']
     });
@@ -77,7 +89,7 @@ module.exports = {
 
     const tocFile = writeFile('/tocs/rfc.json', JSON.stringify(TocSerializer.serialize({ id: 'rfc', links: rfcs })));
 
-    const trees = [rfcsJSON, tocFile, pagesJSON]
+    const trees = [rfcsJSON, teamsJSON, stagesJSON, tocFile, pagesJSON]
 
     if(existsSync(join(dataDirectory, 'images'))) {
       const images = funnel(join(dataDirectory, 'images'), {
