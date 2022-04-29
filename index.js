@@ -48,8 +48,9 @@ module.exports = {
   },
 
   urlsForPrember() {
-    let appPrefix = join(this.project.configPath(), '../..');
-    const rfcs = readdirSync(join(appPrefix, 'text')).map((file) => file.replace(/\.md$/, ''));
+    const rfcs = readdirSync(join(this.getDataDirectory(), 'text'))
+      .map((file) => file.replace(/\.md$/, ''))
+      .map(file => `/id/${file}`);
 
     return ['/', ...rfcs];
   },
