@@ -1,3 +1,7 @@
+v0.2.4 / 2022-04-29
+==================
+* fix prember urls #9 from @mansona
+
 v0.2.3 / 2022-04-28
 ==================
 * Add stages and teams models and data processing #8 from @mansona
