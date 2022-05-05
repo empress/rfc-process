@@ -60,6 +60,7 @@ module.exports = {
 
     const rfcsJSON = new StaticSiteJson(join(dataDirectory, 'text'), {
       contentFolder: 'rfcs',
+      collate: true,
       type: 'rfcs',
       attributes: ['start-date', 'release-date', 'release-versions', 'proposal-pr', 'tracking-link'],
       references: ['teams', 'stage']
@@ -67,12 +68,14 @@ module.exports = {
 
     const teamsJSON = new StaticSiteJson(join(dataDirectory, 'teams'), {
       contentFolder: 'teams',
+      collate: true,
       type: 'teams',
       attributes: ['name'],
     });
 
     const stagesJSON = new StaticSiteJson(join(dataDirectory, 'stages'), {
       contentFolder: 'stages',
+      collate: true,
       type: 'stages',
       attributes: ['name'],
     });
