@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier, no-undef */
 'use strict';
 
 const StaticSiteJson = require('broccoli-static-site-json');
