@@ -1,7 +1,13 @@
+/* eslint-disable ember/no-classic-classes, prettier/prettier */
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-  model() {
-    return this.store.findRecord('toc', 'rfc');
+  async model() {
+    const [, , toc] = await Promise.all([
+      this.store.findAll('team'),
+      this.store.findAll('stage'),
+      this.store.findRecord('toc', 'rfc'),
+    ])
+    return toc;
   }
 });
