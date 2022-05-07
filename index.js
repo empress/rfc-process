@@ -4,17 +4,11 @@
 const StaticSiteJson = require('broccoli-static-site-json');
 const BroccoliMergeTrees = require('broccoli-merge-trees');
 const funnel = require('broccoli-funnel');
-const writeFile = require('broccoli-file-creator');
 
-const { Serializer } = require('jsonapi-serializer');
 const { readdirSync, existsSync } = require('fs');
 const { join } = require('path');
 
-const TocSerializer = new Serializer('toc', {
-  attributes: [
-    'links',
-  ],
-});
+const TocBuilder = require('./lib/toc-builder');
 
 module.exports = {
   name: require('./package').name,
@@ -90,11 +84,9 @@ module.exports = {
       type: 'pages',
     })
 
-    const rfcs = readdirSync(join(dataDirectory, 'text')).map((file) => file.replace(/\.md$/, ''));
+    const tocTree = new TocBuilder(rfcsJSON);
 
-    const tocFile = writeFile('/tocs/rfc.json', JSON.stringify(TocSerializer.serialize({ id: 'rfc', links: rfcs })));
-
-    const trees = [rfcsJSON, teamsJSON, stagesJSON, tocFile, pagesJSON]
+    const trees = [rfcsJSON, teamsJSON, stagesJSON, tocTree, pagesJSON]
 
     if(existsSync(join(dataDirectory, 'images'))) {
       const images = funnel(join(dataDirectory, 'images'), {
