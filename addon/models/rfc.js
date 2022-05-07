@@ -1,18 +1,15 @@
-/* eslint-disable ember/use-ember-data-rfc-395-imports, prettier/prettier */
-import DS from 'ember-data';
-const { Model } = DS;
+import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
 
-export default Model.extend({
-  content: DS.attr(),
-  html: DS.attr(),
+export default class RfcModel extends Model {
+  @attr content;
+  @attr html;
 
-  startDate: DS.attr('date'),
-  releaseDate: DS.attr('date'),
-  releaseVersions: DS.attr(),
-  proposalPr: DS.attr(),
-  trackingLink: DS.attr(),
+  @attr('date') startDate;
+  @attr('date') releaseDate;
+  @attr releaseVersions;
+  @attr proposalPr;
+  @attr trackingLink;
 
-
-  teams: DS.hasMany('team'),
-  stage: DS.belongsTo('stage'),
-});
+  @hasMany('team') teams;
+  @belongsTo('stage') stage;
+}

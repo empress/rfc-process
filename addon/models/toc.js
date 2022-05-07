@@ -1,9 +1,7 @@
-/* eslint-disable ember/use-ember-data-rfc-395-imports */
-import DS from 'ember-data';
-const { Model } = DS;
+import Model, { attr } from '@ember-data/model';
 
-export default Model.extend({
-  links: DS.attr(),
-  stageLinks: DS.attr(),
-  stages: DS.attr(),
-});
+export default class TocModel extends Model {
+  @attr links;
+  @attr stageLinks;
+  @attr stages;
+}
