@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 'use strict';
 
 const StaticSiteJson = require('broccoli-static-site-json');
@@ -16,16 +15,19 @@ module.exports = {
   config() {
     return {
       fastboot: {
-        hostWhitelist: [/localhost:\d+/]
+        hostWhitelist: [/localhost:\d+/],
       },
       showdown: {
-        tables: true
-      }
-    }
+        tables: true,
+      },
+    };
   },
 
   getDataDirectory() {
-    if (this.app.options.rfcProcess && this.app.options.rfcProcess.textLocation) {
+    if (
+      this.app.options.rfcProcess &&
+      this.app.options.rfcProcess.textLocation
+    ) {
       return this.app.options.rfcProcess.textLocation;
     }
 
@@ -35,7 +37,7 @@ module.exports = {
   urlsForPrember() {
     const rfcs = readdirSync(join(this.getDataDirectory(), 'text'))
       .map((file) => file.replace(/\.md$/, ''))
-      .map(file => `/id/${file}`);
+      .map((file) => `/id/${file}`);
 
     return ['/', ...rfcs];
   },
@@ -47,8 +49,14 @@ module.exports = {
       contentFolder: 'rfcs',
       collate: true,
       type: 'rfcs',
-      attributes: ['start-date', 'release-date', 'release-versions', 'proposal-pr', 'tracking-link'],
-      references: ['teams', 'stage']
+      attributes: [
+        'start-date',
+        'release-date',
+        'release-versions',
+        'proposal-pr',
+        'tracking-link',
+      ],
+      references: ['teams', 'stage'],
     });
 
     const teamsJSON = new StaticSiteJson(join(dataDirectory, 'teams'), {
@@ -66,26 +74,26 @@ module.exports = {
     });
 
     const readmeFile = funnel(dataDirectory, {
-      files: ['README.md']
+      files: ['README.md'],
     });
 
     const pagesJSON = new StaticSiteJson(readmeFile, {
       contentFolder: 'pages',
       type: 'pages',
-    })
+    });
 
     const tocTree = new TocBuilder(rfcsJSON);
 
-    const trees = [rfcsJSON, teamsJSON, stagesJSON, tocTree, pagesJSON]
+    const trees = [rfcsJSON, teamsJSON, stagesJSON, tocTree, pagesJSON];
 
-    if(existsSync(join(dataDirectory, 'images'))) {
+    if (existsSync(join(dataDirectory, 'images'))) {
       const images = funnel(join(dataDirectory, 'images'), {
-        destDir: 'images'
+        destDir: 'images',
       });
 
       trees.push(images);
     }
 
     return BroccoliMergeTrees(trees);
-  }
+  },
 };
