@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier, no-undef */
+/* eslint-disable prettier/prettier */
 'use strict';
 
 const StaticSiteJson = require('broccoli-static-site-json');
@@ -27,16 +27,6 @@ module.exports = {
   getDataDirectory() {
     if (this.app.options.rfcProcess && this.app.options.rfcProcess.textLocation) {
       return this.app.options.rfcProcess.textLocation;
-    } else if(this.app.options.rfcProcess && this.app.options.rfcProcess.source) {
-      try {
-        return resolve.sync(this.app.options.rfcProcess.source, { basedir: process.cwd() });
-      } catch (e) {
-        // try getting node_modules directly
-        let fullPath = join(process.cwd(), 'node_modules', this.app.options.rfcProcess.source);
-        if(existsSync(fullPath)) {
-          return fullPath;
-        }
-      }
     }
 
     return join(this.project.configPath(), '../..');
