@@ -1,8 +1,10 @@
-/* eslint-disable ember/no-classic-classes, prettier/prettier */
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
-export default Route.extend({
+export default class IndexRoute extends Route {
+  @service store;
+
   model() {
-    return this.store.findRecord('page', 'README')
+    return this.store.findRecord('page', 'README');
   }
-});
+}
