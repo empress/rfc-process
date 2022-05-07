@@ -1,3 +1,10 @@
+v0.3.0 / 2022-05-07
+==================
+* navigate to all pages in a test #13 from @mansona
+* Add grouped Table of Contents file #12 from @mansona
+* Fix dependencies #11 from @mansona
+* Update to 3.28 with ember-cli-update #10 from @mansona
+
 v0.2.4 / 2022-04-29
 ==================
 * fix prember urls #9 from @mansona
