@@ -1,9 +1,7 @@
-/* eslint-disable ember/use-ember-data-rfc-395-imports */
-import DS from 'ember-data';
-const { Model } = DS;
+import Model, { attr } from '@ember-data/model';
 
-export default Model.extend({
-  content: DS.attr(),
-  html: DS.attr(),
-  name: DS.attr(),
-});
+export default class TeamModel extends Model {
+  @attr content;
+  @attr html;
+  @attr name;
+}

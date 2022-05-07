@@ -1,14 +1,13 @@
-/* eslint-disable ember/use-ember-data-rfc-395-imports, ember/no-classic-classes, prettier/prettier */
-import DS from 'ember-data';
+import JSONAPIAdapter from '@ember-data/adapter/json-api';
 
-export default DS.JSONAPIAdapter.extend({
+export default class ApplicationAdapter extends JSONAPIAdapter {
   urlForFindAll(modelName) {
     const path = this.pathForType(modelName);
     return `/${path}/all.json`;
-  },
+  }
 
   urlForFindRecord(id, modelName) {
     const path = this.pathForType(modelName);
     return `/${path}/${id}.json`;
   }
-});
+}
