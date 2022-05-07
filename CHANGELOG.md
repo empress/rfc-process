@@ -1,3 +1,7 @@
+v0.4.0 / 2022-05-07
+==================
+* Fix some lints from Lint to the Future dashboard #14 from @mansona
+
 v0.3.0 / 2022-05-07
 ==================
 * navigate to all pages in a test #13 from @mansona
