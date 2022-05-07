@@ -6,7 +6,7 @@ export default Route.extend({
     const [, , toc] = await Promise.all([
       this.store.findAll('team'),
       this.store.findAll('stage'),
-      this.store.findRecord('toc', 'rfc'),
+      this.store.findRecord('toc', 'rfcs'),
     ])
     return toc;
   }

@@ -33,6 +33,7 @@ module.exports = {
         './blueprints/*/index.js',
         './config/**/*.js',
         './tests/dummy/config/**/*.js',
+        './lib/**/*.js',
       ],
       parserOptions: {
         sourceType: 'script',
@@ -48,6 +49,14 @@ module.exports = {
       // Test files:
       files: ['tests/**/*-test.{js,ts}'],
       extends: ['plugin:qunit/recommended'],
+    },
+    {
+      // mocha test files
+      files: ['node-tests/**/*.js'],
+      env: {
+        node: true,
+        mocha: true,
+      },
     },
   ],
 };
