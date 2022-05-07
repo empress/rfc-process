@@ -4,4 +4,6 @@ const { Model } = DS;
 
 export default Model.extend({
   links: DS.attr(),
+  stageLinks: DS.attr(),
+  stages: DS.attr(),
 });
