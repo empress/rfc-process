@@ -1,8 +1,7 @@
-/* eslint-disable ember/no-classic-classes, prettier/prettier */
 import Route from '@ember/routing/route';
+export default class RfcsRoute extends Route {
 
-export default Route.extend({
   model(params) {
-    return this.store.findRecord('rfc', params.id)
+    return this.store.findRecord('rfc', params.id);
   }
-});
+}
