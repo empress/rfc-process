@@ -1,31 +1,27 @@
-/* eslint-disable ember/no-classic-classes, ember/require-computed-property-dependencies, prettier/prettier, ember/no-actions-hash */
 import Controller, { inject as controller } from '@ember/controller';
-import { computed } from '@ember/object';
 
-export default Controller.extend({
-  application: controller(),
+export default class RfcController extends Controller {
+  @controller application;
 
-  previousRFC: computed('model.id', function() {
-    let currentRFCIndex = this.application.model.links.indexOf(this.model.id)
-    if(currentRFCIndex <= 0 ) {
-      return;
+  get previousRFC() {
+    let currentRFCIndex = this.application.model.links.indexOf(this.model.id);
+    if (currentRFCIndex <= 0) {
+      return null;
     }
 
     return this.application.model.links[currentRFCIndex - 1];
-  }),
+  }
 
-  nextRFC: computed('model.id', function() {
-    let currentRFCIndex = this.application.model.links.indexOf(this.model.id)
-    if(currentRFCIndex >= this.application.model.links.length) {
-      return;
+  get nextRFC() {
+    let currentRFCIndex = this.application.model.links.indexOf(this.model.id);
+    if (currentRFCIndex >= this.application.model.links.length) {
+      return null;
     }
 
     return this.application.model.links[currentRFCIndex + 1];
-  }),
-
-  actions: {
-    toggleSidebar() {
-      document.body.classList.toggle('sidebar-hidden');
-    }
   }
-});
+
+  toggleSidebar() {
+    document.body.classList.toggle('sidebar-hidden');
+  }
+}
