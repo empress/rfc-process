@@ -4,4 +4,5 @@ export default class StageModel extends Model {
   @attr content;
   @attr html;
   @attr name;
+  @attr order;
 }
