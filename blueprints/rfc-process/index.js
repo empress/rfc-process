@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 'use strict';
 
 const path = require('path');
@@ -14,24 +13,21 @@ module.exports = {
 
   afterInstall() {
     let devInstall = {
-      packages: [
-        'prember',
-        'ember-cli-fastboot',
-      ]
-    }
+      packages: ['prember', 'ember-cli-fastboot'],
+    };
 
     return this.addAddonsToProject(devInstall);
   },
 
-  fileMapTokens: function() {
+  fileMapTokens: function () {
     let isAddon = this.project.isEmberCLIAddon();
     return {
       __base__() {
-        if(isAddon) {
+        if (isAddon) {
           return path.join('tests', 'dummy');
         }
         return '';
-      }
-    }
+      },
+    };
   },
 };
