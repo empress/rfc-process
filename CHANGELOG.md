@@ -1,3 +1,8 @@
+v0.4.1/ 2022-05-08
+==================
+* fix prettier lints #16 from @mansona
+* add order to stages model #15 from @mansona
+
 v0.4.0 / 2022-05-07
 ==================
 * Fix some lints from Lint to the Future dashboard #14 from @mansona
