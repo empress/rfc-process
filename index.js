@@ -70,7 +70,7 @@ module.exports = {
       contentFolder: 'stages',
       collate: true,
       type: 'stages',
-      attributes: ['name'],
+      attributes: ['name', 'order'],
     });
 
     const readmeFile = funnel(dataDirectory, {
