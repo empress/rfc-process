@@ -14,6 +14,8 @@ tracking-link: https://github.com/mansona/rfcs/issues/4
 stage: ready-for-release
 ---
 
+# Name of the RFC
+
 Some introduction text, this is what we really think about your awesome RFC before we get into the details
 
 ## Overview
