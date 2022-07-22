@@ -12,4 +12,12 @@ export default class RfcModel extends Model {
 
   @hasMany('team') teams;
   @belongsTo('stage') stage;
+
+  get title() {
+    const matcher = this.content.match(/^# (.*)\n/) ?? [];
+
+    const [, text] = matcher;
+
+    return text;
+  }
 }
