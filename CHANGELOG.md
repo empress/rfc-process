@@ -1,3 +1,8 @@
+v1.0.0 / 2022-07-22
+==================
+* Add ember-meta implementation #18 from @mansona
+* update mdbook-template for testing #17 from @mansona
+
 v0.4.1/ 2022-05-08
 ==================
 * fix prettier lints #16 from @mansona
